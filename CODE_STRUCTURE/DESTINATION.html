@@ -1,0 +1,773 @@
+<!-- =====================================================
+     DESTINATIONS PAGE: DESTINATION CARDS
+     ===================================================== -->
+
+<!--
+    I kept the destination cards simple so visitors can
+    see the main information without too much reading.
+
+    The Explore More button opens a larger information
+    section underneath the cards.
+
+    The Request a Quote button goes directly to the
+    quotation form with the destination already selected.
+-->
+
+<!doctype html>
+<!-- I use HTML5 for the Destinations page. -->
+<html lang="en">
+  <!-- I set English as the page language. -->
+  <head>
+    <!-- I begin the page settings. -->
+    <meta charset="UTF-8" />
+    <!-- I support standard characters. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- I make the page responsive. -->
+    <title>Travel Destinations | Bee Free Travel Agency</title>
+    <!-- I give this page a unique SEO title. -->
+    <meta
+      name="description"
+      content="Explore Paris, Dubai and Zanzibar with destination search, travel information, interactive maps and travel photographs."
+    />
+    <!-- I explain the page to search engines. -->
+    <link rel="stylesheet" href="../CSS_STYLE/STYLES.css" />
+    <!-- I connect the same stylesheet used by Home. -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    />
+    <!-- I load Leaflet's map styling from its official published library. -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      defer
+    ></script>
+    <!-- I load Leaflet so I can display interactive geographical maps. -->
+    <script src="../CSS_STYLE/JS_main.js" defer></script>
+    <!-- I load my JavaScript after the mapping library. -->
+  </head>
+  <!-- I finish the page settings. -->
+  <body>
+    <!-- I begin the visible page. -->
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+    <!-- I provide an accessibility shortcut. -->
+
+    <!-- DESTINATIONS SECTION 1: HEADER -->
+    <header class="site-header">
+      <!-- I begin the shared navigation header. -->
+      <div class="wrap header-inner">
+        <!-- I align the logo and navigation. -->
+        <a class="brand" href="Home.html">
+          <!-- I make the logo link to Home. -->
+          <img
+            src="IMAGES/BEE_FREE_LOGO.jpeg"
+            alt="Bee Free Travel Agency logo"
+          />
+          <!-- I display the original agency logo. -->
+          <span><strong>BEE FREE</strong><small>TRAVEL AGENCY</small></span>
+          <!-- I display the business name. -->
+        </a>
+        <!-- I finish the logo link. -->
+        <button
+          id="menuButton"
+          class="menu-toggle"
+          type="button"
+          aria-controls="mainNav"
+          aria-expanded="false"
+        >
+          ☰ Menu
+        </button>
+        <!-- I add the mobile menu control. -->
+        <nav id="mainNav" class="nav" aria-label="Main navigation">
+          <!-- I begin the navigation links. -->
+          <a href="Home.html">Home</a>
+          <!-- I link to Home. -->
+          <a href="about.html">About</a>
+          <!-- I link to About. -->
+          <a href="DESTINATION.html" aria-current="page">Destinations</a>
+          <!-- I mark Destinations as active. -->
+          <a href="hotel.html">Hotels</a>
+          <!-- I link to Hotels. -->
+          <a href="REQUEST_QUOTE.html">Request a Quote</a>
+          <!-- I link to the quotation form. -->
+          <a href="contact.html">Contact</a>
+          <!-- I link to Contact. -->
+        </nav>
+        <!-- I finish the navigation. -->
+      </div>
+      <!-- I finish the header container. -->
+    </header>
+    <!-- I finish the header. -->
+
+    <main id="mainContent">
+      <!-- I begin the main destination content. -->
+
+      <!-- DESTINATIONS SECTION 2: INTRODUCTION -->
+      <section class="subhero">
+        <!-- I create an introduction with a soft background. -->
+        <div class="wrap">
+          <!-- I centre the introductory content. -->
+          <p class="eyebrow">WHERE TO NEXT?</p>
+          <!-- I introduce the travel destination topic. -->
+          <h1>Explore Our Destinations</h1>
+          <!-- I display the page title. -->
+          <p>
+            From romantic European streets to modern cities and tropical island
+            beaches, discover where your next adventure could take you.
+          </p>
+          <!-- I summarise the featured destinations. -->
+        </div>
+        <!-- I finish the introduction content. -->
+      </section>
+      <!-- I finish the introductory section. -->
+
+      <!-- DESTINATIONS SECTION 3: SEARCH AND FILTER -->
+      <section class="section wrap">
+        <!-- I group the search controls, destination cards and descriptions. -->
+        <div class="section-title">
+          <!-- I begin the search section introduction. -->
+          <p class="eyebrow">FIND YOUR PLACE</p>
+          <!-- I label the search section. -->
+          <h2>Discover a destination that suits you.</h2>
+          <!-- I display a helpful heading. -->
+          <p>
+            Search by name, filter your travel style or sort the destinations
+            alphabetically.
+          </p>
+          <!-- I explain the search options. -->
+        </div>
+        <!-- I finish the search introduction. -->
+        <div class="filters">
+          <!-- I group the three filtering controls. -->
+          <div class="field">
+            <!-- I begin the keyword search field. -->
+            <label for="searchInput">Search destinations</label>
+            <!-- I label the keyword search. -->
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Try Paris, beaches or Dubai"
+            />
+            <!-- I let visitors search destination descriptions. -->
+          </div>
+          <!-- I finish the keyword search field. -->
+          <div class="field">
+            <!-- I begin the travel style selector. -->
+            <label for="styleFilter">Travel style</label>
+            <!-- I label the travel style dropdown. -->
+            <select id="styleFilter">
+              <!-- I let visitors filter by city or beach holidays. -->
+              <option value="all">All travel styles</option>
+              <!-- I show all places by default. -->
+              <option value="city">City escapes</option>
+              <!-- I allow city destination filtering. -->
+              <option value="beach">Beach escapes</option>
+              <!-- I allow beach destination filtering. -->
+            </select>
+            <!-- I finish the travel style dropdown. -->
+          </div>
+          <!-- I finish the travel style field. -->
+          <div class="field">
+            <!-- I begin the sorting controls. -->
+            <label for="sortBy">Sort by</label>
+            <!-- I label the sort dropdown. -->
+            <select id="sortBy">
+              <!-- I let visitors choose the display order. -->
+              <option value="featured">Featured order</option>
+              <!-- I preserve the original order by default. -->
+              <option value="az">Name A–Z</option>
+              <!-- I offer alphabetical sorting. -->
+              <option value="za">Name Z–A</option>
+              <!-- I offer reverse alphabetical sorting. -->
+            </select>
+            <!-- I finish the sort dropdown. -->
+          </div>
+          <!-- I finish the sorting field. -->
+        </div>
+        <!-- I finish the search controls. -->
+        <p id="destCount" class="result-count" aria-live="polite">
+          Showing 3 of 3 destinations
+        </p>
+        <!-- I display how many destinations match the search. -->
+
+        <!-- DESTINATIONS SECTION 4: DESTINATION CARDS -->
+        <div id="destGrid" class="cards">
+          <!-- I create the destination card grid. -->
+
+          <article
+            class="card destination-card"
+            data-name="Paris"
+            data-style="city"
+          >
+            <!-- I identify Paris as a city destination. -->
+            <button
+              type="button"
+              class="photo-button"
+              data-full="IMAGES/Paris_destination.jpg"
+              data-caption="Paris, France"
+              aria-label="View enlarged photograph of Paris"
+            >
+              <!-- I make the Paris photograph open the gallery. -->
+              <img
+                src="IMAGES/Paris_destination.jpg"
+                alt="Travel photograph of Paris"
+                loading="lazy"
+              />
+              <!-- I show the Paris image. -->
+            </button>
+            <!-- I finish the Paris photo button. -->
+            <div class="card-body">
+              <!-- I begin the Paris card text. -->
+              <span class="tag">EUROPE</span>
+              <!-- I display the region. -->
+              <h3>Paris, France</h3>
+              <!-- I display the destination name. -->
+              <p>
+                Experience romantic streets, charming cafés, historic landmarks
+                and wonderful French culture.
+              </p>
+              <!-- I briefly describe Paris. -->
+              <div class="actions">
+                <!-- I group Paris's two main actions. -->
+                <button
+                  type="button"
+                  class="btn btn-green explore-button"
+                  data-target="parisDetails"
+                  aria-controls="parisDetails"
+                  aria-expanded="false"
+                >
+                  Explore More
+                </button>
+                <!-- I open the detailed Paris information. -->
+                <a
+                  class="btn btn-gold"
+                  href="REQUEST_QUOTE.html?destination=Paris"
+                  >Request a Quote</a
+                >
+                <!-- I send Paris to the travel enquiry form. -->
+              </div>
+              <!-- I finish the Paris actions. -->
+              <button
+                class="text-link map-button"
+                type="button"
+                data-lat="48.8566"
+                data-lng="2.3522"
+                data-place="Paris, France"
+              >
+                View on Map
+              </button>
+              <!-- I zoom the interactive map to Paris. -->
+            </div>
+            <!-- I finish the Paris card text. -->
+          </article>
+          <!-- I finish the Paris card. -->
+
+          <article
+            class="card destination-card"
+            data-name="Dubai"
+            data-style="city"
+          >
+            <!-- I identify Dubai as a city destination. -->
+            <button
+              type="button"
+              class="photo-button"
+              data-full="IMAGES/Dubai_destination.jpg"
+              data-caption="Dubai, UAE"
+              aria-label="View enlarged photograph of Dubai"
+            >
+              <!-- I make the Dubai photograph open the gallery. -->
+              <img
+                src="IMAGES/Dubai_destination.jpg"
+                alt="Travel photograph of Dubai"
+                loading="lazy"
+              />
+              <!-- I show the Dubai image. -->
+            </button>
+            <!-- I finish the Dubai photo button. -->
+            <div class="card-body">
+              <!-- I begin the Dubai card text. -->
+              <span class="tag">MIDDLE EAST</span>
+              <!-- I display the region. -->
+              <h3>Dubai, UAE</h3>
+              <!-- I display the destination name. -->
+              <p>
+                Explore impressive skyscrapers, advanced technology, luxury
+                hotels and memorable desert adventures.
+              </p>
+              <!-- I briefly describe Dubai. -->
+              <div class="actions">
+                <!-- I group the Dubai actions. -->
+                <button
+                  type="button"
+                  class="btn btn-green explore-button"
+                  data-target="dubaiDetails"
+                  aria-controls="dubaiDetails"
+                  aria-expanded="false"
+                >
+                  Explore More
+                </button>
+                <!-- I open detailed Dubai information. -->
+                <a
+                  class="btn btn-gold"
+                  href="REQUEST_QUOTE.html?destination=Dubai"
+                  >Request a Quote</a
+                >
+                <!-- I send Dubai to the travel enquiry form. -->
+              </div>
+              <!-- I finish the Dubai actions. -->
+              <button
+                class="text-link map-button"
+                type="button"
+                data-lat="25.2048"
+                data-lng="55.2708"
+                data-place="Dubai, UAE"
+              >
+                View on Map
+              </button>
+              <!-- I zoom the interactive map to Dubai. -->
+            </div>
+            <!-- I finish the Dubai card text. -->
+          </article>
+          <!-- I finish the Dubai card. -->
+
+          <article
+            class="card destination-card"
+            data-name="Zanzibar"
+            data-style="beach"
+          >
+            <!-- I identify Zanzibar as a beach destination. -->
+            <button
+              type="button"
+              class="photo-button"
+              data-full="IMAGES/zanzibar_destination.jpg"
+              data-caption="Zanzibar, Tanzania"
+              aria-label="View enlarged photograph of Zanzibar"
+            >
+              <!-- I make the Zanzibar photograph open the gallery. -->
+              <img
+                src="IMAGES/zanzibar_destination.jpg"
+                alt="Tropical beach in Zanzibar"
+                loading="lazy"
+              />
+              <!-- I show the Zanzibar photograph. -->
+            </button>
+            <!-- I finish the Zanzibar photo button. -->
+            <div class="card-body">
+              <!-- I begin the Zanzibar card text. -->
+              <span class="tag">EAST AFRICA</span>
+              <!-- I display the region. -->
+              <h3>Zanzibar, Tanzania</h3>
+              <!-- I display the destination name. -->
+              <p>
+                Enjoy tropical beaches, turquoise ocean water, rich island
+                culture and beautiful coastal resorts.
+              </p>
+              <!-- I briefly describe Zanzibar. -->
+              <div class="actions">
+                <!-- I group the Zanzibar actions. -->
+                <button
+                  type="button"
+                  class="btn btn-green explore-button"
+                  data-target="zanzibarDetails"
+                  aria-controls="zanzibarDetails"
+                  aria-expanded="false"
+                >
+                  Explore More
+                </button>
+                <!-- I open Zanzibar's detailed information. -->
+                <a
+                  class="btn btn-gold"
+                  href="REQUEST_QUOTE.html?destination=Zanzibar"
+                  >Request a Quote</a
+                >
+                <!-- I send Zanzibar to the travel enquiry form. -->
+              </div>
+              <!-- I finish the Zanzibar actions. -->
+              <button
+                class="text-link map-button"
+                type="button"
+                data-lat="-6.1659"
+                data-lng="39.2026"
+                data-place="Zanzibar, Tanzania"
+              >
+                View on Map
+              </button>
+              <!-- I zoom the interactive map to Zanzibar. -->
+            </div>
+            <!-- I finish the Zanzibar card text. -->
+          </article>
+          <!-- I finish the Zanzibar card. -->
+        </div>
+        <!-- I finish the destination card grid. -->
+        <p id="noResults" class="empty" hidden>
+          No destinations match your search. Please try another word.
+        </p>
+        <!-- I provide feedback if the search returns no results. -->
+
+        <!-- DESTINATIONS SECTION 5: PARIS DETAILED INFORMATION -->
+        <section id="parisDetails" class="details" hidden>
+          <!-- I keep Paris's longer description hidden until selected. -->
+          <div class="details-header">
+            <!-- I group the heading and Close button. -->
+            <div>
+              <p class="eyebrow">DISCOVER FRANCE</p>
+              <h2>Paris — The City of Love</h2>
+            </div>
+            <!-- I introduce Paris and its well-known nickname. -->
+            <button type="button" class="close-details">✕ Close</button>
+            <!-- I let visitors close the description. -->
+          </div>
+          <!-- I finish the heading row. -->
+          <div class="details-grid">
+            <!-- I place the Paris photograph beside detailed information. -->
+            <img
+              src="IMAGES/Paris_destination.jpg"
+              alt="Paris travel scenery"
+              loading="lazy"
+            />
+            <!-- I display the original Paris photograph. -->
+            <div>
+              <!-- I begin the Paris description. -->
+              <h3>What makes Paris special?</h3>
+              <!-- I introduce the city's attractions. -->
+              <p>
+                Paris is known for romance, art, fashion, historic buildings and
+                café culture. Visitors can explore picturesque streets,
+                traditional bakeries and famous landmarks throughout the city.
+              </p>
+              <!-- I explain the atmosphere of Paris. -->
+              <h3>What can you look forward to?</h3>
+              <!-- I introduce a list of travel experiences. -->
+              <ul>
+                <li>Visiting the Eiffel Tower.</li>
+                <li>Exploring the Louvre Museum.</li>
+                <li>Walking beside the Seine River.</li>
+                <li>Discovering French cafés and pastries.</li>
+                <li>Visiting beautiful historic neighbourhoods.</li>
+              </ul>
+              <!-- I list popular visitor experiences. -->
+            </div>
+            <!-- I finish the first part of the Paris description. -->
+          </div>
+          <!-- I finish the Paris image-and-text layout. -->
+          <div class="details-footer">
+            <!-- I begin practical information about staying in Paris. -->
+            <h3>Accommodation in Paris</h3>
+            <!-- I introduce accommodation options. -->
+            <p>
+              Paris offers boutique hotels, city apartments and luxury
+              accommodation. Travellers interested in historic streets may enjoy
+              exploring Le Marais, while those focused on sightseeing may prefer
+              convenient public transport connections.
+            </p>
+            <!-- I explain accommodation choices without claiming live availability. -->
+            <h3>Things to know before visiting</h3>
+            <!-- I introduce useful travel facts. -->
+            <ul>
+              <li>Paris is the capital city of France.</li>
+              <li>The currency is the Euro (EUR).</li>
+              <li>French is the official language.</li>
+              <li>The Eiffel Tower was built for the 1889 World's Fair.</li>
+            </ul>
+            <!-- I give practical background information. -->
+            <a class="btn btn-gold" href="REQUEST_QUOTE.html?destination=Paris"
+              >Request a Quote for Paris</a
+            >
+            <!-- I offer the quotation only after presenting travel information. -->
+          </div>
+          <!-- I finish the practical information. -->
+        </section>
+        <!-- I finish the Paris detailed section. -->
+
+        <!-- DESTINATIONS SECTION 6: DUBAI DETAILED INFORMATION -->
+        <section id="dubaiDetails" class="details" hidden>
+          <!-- I keep Dubai's long description hidden until selected. -->
+          <div class="details-header">
+            <!-- I group the Dubai title and Close button. -->
+            <div>
+              <p class="eyebrow">DISCOVER THE UAE</p>
+              <h2>Dubai — A City of Innovation</h2>
+            </div>
+            <!-- I introduce Dubai's modern appeal. -->
+            <button type="button" class="close-details">✕ Close</button>
+            <!-- I let visitors close Dubai's description. -->
+          </div>
+          <!-- I finish the title row. -->
+          <div class="details-grid">
+            <!-- I arrange the Dubai photograph beside the description. -->
+            <img
+              src="IMAGES/Dubai_destination.jpg"
+              alt="Dubai city scenery"
+              loading="lazy"
+            />
+            <!-- I display the original Dubai image. -->
+            <div>
+              <!-- I begin Dubai's descriptive information. -->
+              <h3>What makes Dubai special?</h3>
+              <!-- I introduce the city's distinctive features. -->
+              <p>
+                Dubai combines striking modern buildings, luxury shopping,
+                innovative developments and desert landscapes. Visitors can
+                explore world-famous attractions while also discovering
+                traditional markets and local culture.
+              </p>
+              <!-- I explain Dubai's mix of modern and traditional experiences. -->
+              <h3>What can you look forward to?</h3>
+              <!-- I introduce popular Dubai activities. -->
+              <ul>
+                <li>Visiting the Burj Khalifa.</li>
+                <li>Exploring Dubai Mall.</li>
+                <li>Enjoying a desert safari experience.</li>
+                <li>Discovering Palm Jumeirah.</li>
+                <li>Exploring waterfront areas and beaches.</li>
+              </ul>
+              <!-- I list different visitor experiences. -->
+            </div>
+            <!-- I finish the first part of Dubai's description. -->
+          </div>
+          <!-- I finish Dubai's image-and-text layout. -->
+          <div class="details-footer">
+            <!-- I begin accommodation and travel information. -->
+            <h3>Accommodation in Dubai</h3>
+            <!-- I introduce accommodation choices. -->
+            <p>
+              Dubai has luxury hotels, modern city accommodation and beachfront
+              resorts. Areas such as Downtown Dubai, Dubai Marina and Jumeirah
+              offer different travel experiences depending on the visitor's
+              interests.
+            </p>
+            <!-- I explain where tourists may consider staying. -->
+            <h3>Things to know before visiting</h3>
+            <!-- I introduce useful facts. -->
+            <ul>
+              <li>Dubai is in the United Arab Emirates.</li>
+              <li>The currency is the UAE Dirham (AED).</li>
+              <li>The Burj Khalifa is 828 metres tall.</li>
+              <li>Palm Jumeirah is a famous artificial island.</li>
+            </ul>
+            <!-- I provide short background facts. -->
+            <a class="btn btn-gold" href="REQUEST_QUOTE.html?destination=Dubai"
+              >Request a Quote for Dubai</a
+            >
+            <!-- I offer a quotation after the visitor has read the details. -->
+          </div>
+          <!-- I finish Dubai's practical information. -->
+        </section>
+        <!-- I finish the Dubai detailed section. -->
+
+        <!-- DESTINATIONS SECTION 7: ZANZIBAR DETAILED INFORMATION -->
+        <section id="zanzibarDetails" class="details" hidden>
+          <!-- I hide Zanzibar's information until Explore More is selected. -->
+          <div class="details-header">
+            <!-- I group the heading and Close button. -->
+            <div>
+              <p class="eyebrow">DISCOVER TANZANIA</p>
+              <h2>Zanzibar — A Tropical Paradise</h2>
+            </div>
+            <!-- I introduce Zanzibar's island character. -->
+            <button type="button" class="close-details">✕ Close</button>
+            <!-- I let visitors close Zanzibar's information. -->
+          </div>
+          <!-- I finish the heading row. -->
+          <div class="details-grid">
+            <!-- I put the island photograph beside its description. -->
+            <img
+              src="IMAGES/zanzibar_destination.jpg"
+              alt="Zanzibar tropical beach"
+              loading="lazy"
+            />
+            <!-- I display the original Zanzibar image. -->
+            <div>
+              <!-- I begin the Zanzibar description. -->
+              <h3>What makes Zanzibar special?</h3>
+              <!-- I introduce the island's unique features. -->
+              <p>
+                Zanzibar is a beautiful island destination off the coast of
+                Tanzania. It is known for tropical beaches, clear ocean water,
+                Swahili culture and the historic streets of Stone Town.
+              </p>
+              <!-- I explain why visitors may enjoy Zanzibar. -->
+              <h3>What can you look forward to?</h3>
+              <!-- I introduce island activities. -->
+              <ul>
+                <li>Relaxing on white-sand beaches.</li>
+                <li>Exploring historic Stone Town.</li>
+                <li>Taking boat trips and snorkelling.</li>
+                <li>Visiting local spice plantations.</li>
+                <li>Enjoying Swahili food and culture.</li>
+              </ul>
+              <!-- I list possible travel experiences. -->
+            </div>
+            <!-- I finish the first part of Zanzibar's description. -->
+          </div>
+          <!-- I finish the island image-and-text layout. -->
+          <div class="details-footer">
+            <!-- I begin the practical destination information. -->
+            <h3>Accommodation in Zanzibar</h3>
+            <!-- I introduce different accommodation styles. -->
+            <p>
+              Zanzibar offers beachfront resorts, boutique hotels and smaller
+              guesthouses. Travellers seeking relaxing beach settings often
+              explore Nungwi and Kendwa, while Stone Town offers an experience
+              closer to the island's history and culture.
+            </p>
+            <!-- I explain where different travellers may prefer to stay. -->
+            <h3>Things to know before visiting</h3>
+            <!-- I introduce useful facts. -->
+            <ul>
+              <li>Zanzibar forms part of Tanzania.</li>
+              <li>It is located in the Indian Ocean.</li>
+              <li>The currency is the Tanzanian Shilling (TZS).</li>
+              <li>Swahili is widely spoken.</li>
+            </ul>
+            <!-- I provide short destination facts. -->
+            <a
+              class="btn btn-gold"
+              href="REQUEST_QUOTE.html?destination=Zanzibar"
+              >Request a Quote for Zanzibar</a
+            >
+            <!-- I let visitors request travel information after exploring the island. -->
+          </div>
+          <!-- I finish Zanzibar's practical information. -->
+        </section>
+        <!-- I finish the Zanzibar detailed section. -->
+      </section>
+      <!-- I finish the destination cards and detailed information section. -->
+
+      <!-- DESTINATIONS SECTION 8: INTERACTIVE MAP -->
+      <section class="section soft">
+        <!-- I create a separate background section for the map. -->
+        <div class="wrap">
+          <!-- I keep the map aligned with the website. -->
+          <div class="section-title">
+            <!-- I begin the map introduction. -->
+            <p class="eyebrow">SEE THE WORLD</p>
+            <!-- I introduce the interactive map. -->
+            <h2>Explore our destinations on the map.</h2>
+            <!-- I explain the map's purpose. -->
+            <p>
+              Select a marker or click View on Map underneath a destination
+              card.
+            </p>
+            <!-- I explain how visitors can use the map. -->
+          </div>
+          <!-- I finish the map introduction. -->
+          <div
+            id="destinationMap"
+            class="map"
+            role="region"
+            aria-label="Map showing Paris, Dubai and Zanzibar"
+          ></div>
+          <!-- I provide the container Leaflet uses for the map. -->
+          <p id="mapNotice" hidden>
+            The map requires an internet connection to load.
+          </p>
+          <!-- I provide feedback if Leaflet is unavailable. -->
+          <p>
+            Map markers represent general destination locations, not specific
+            hotels.
+          </p>
+          <!-- I clarify what the map displays. -->
+        </div>
+        <!-- I finish the map container. -->
+      </section>
+      <!-- I finish the map section. -->
+
+      <!-- DESTINATIONS SECTION 9: FREQUENTLY ASKED QUESTIONS -->
+      <section class="section wrap">
+        <!-- I create a section for common travel questions. -->
+        <div class="section-title">
+          <p class="eyebrow">HELPFUL INFORMATION</p>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <!-- I introduce the FAQ. -->
+        <div class="faq">
+          <!-- I group the expandable questions. -->
+          <details>
+            <summary>Can I request another destination?</summary>
+            <p>
+              Yes. Select Other on our Request a Quote page and type your
+              preferred destination.
+            </p>
+          </details>
+          <!-- I explain how visitors can request another place. -->
+          <details>
+            <summary>Are travel prices already confirmed?</summary>
+            <p>
+              No. The website provides travel inspiration and an enquiry
+              process. Prices and availability must be confirmed separately.
+            </p>
+          </details>
+          <!-- I avoid implying that sample information represents a live quotation. -->
+          <details>
+            <summary>Can I view the travel photographs?</summary>
+            <p>
+              Yes. Select any destination photograph to see a larger version in
+              the gallery.
+            </p>
+          </details>
+          <!-- I explain the image lightbox feature. -->
+        </div>
+        <!-- I finish the FAQs. -->
+      </section>
+      <!-- I finish the FAQ section. -->
+
+      <!-- DESTINATIONS SECTION 10: PHOTO LIGHTBOX -->
+      <dialog
+        id="imageDialog"
+        class="lightbox"
+        aria-label="Enlarged destination photograph"
+      >
+        <!-- I create the dialog that opens when a photograph is selected. -->
+        <button
+          id="closePhoto"
+          class="btn btn-green"
+          type="button"
+          aria-label="Close photograph"
+        >
+          ✕ Close
+        </button>
+        <!-- I provide a Close button for the gallery. -->
+        <img id="dialogPhoto" alt="" />
+        <!-- I display the selected enlarged photograph here. -->
+        <p id="dialogCaption"></p>
+        <!-- I display the selected destination name here. -->
+      </dialog>
+      <!-- I finish the photo viewer. -->
+    </main>
+    <!-- I finish the main destination content. -->
+
+    <!-- DESTINATIONS SECTION 11: FOOTER -->
+    <footer class="site-footer">
+      <!-- I begin the shared footer. -->
+      <div class="wrap foot-grid">
+        <!-- I arrange the footer into columns. -->
+        <div>
+          <h3>Bee Free Travel Agency</h3>
+          <p>Explore more. Experience more. Travel freely.</p>
+        </div>
+        <!-- I display the agency identity. -->
+        <div>
+          <h3>Explore</h3>
+          <a href="DESTINATION.html">Destinations</a
+          ><a href="hotel.html">Hotels</a
+          ><a href="REQUEST_QUOTE.html">Request a Quote</a>
+        </div>
+        <!-- I add travel links. -->
+        <div>
+          <h3>Information</h3>
+          <a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+          <p>South Africa</p>
+        </div>
+        <!-- I add information links. -->
+      </div>
+      <!-- I finish the footer columns. -->
+      <div class="copyright">
+        © 2026 Bee Free Travel Agency. Student Website Project.
+      </div>
+      <!-- I display the copyright line. -->
+    </footer>
+    <!-- I finish the shared footer. -->
+  </body>
+  <!-- I finish the visible page. -->
+</html>
+<!-- I finish the HTML document. -->
