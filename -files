@@ -1,0 +1,28 @@
+[33mcommit af03e63670643676f5fbada7593cc0cf5026ef27[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: ST10503795 <ST10503795@myemeris.edu.za>
+Date:   Tue Nov 3 16:32:16 2026 +0200
+
+    First commit with updated images and initial commit
+
+ .vscode/settings.json                          |   3 [32m+[m
+ CODE_STRUCTURE/DESTINATION.html                | 773 [32m+++++++++++++++++++++++++[m
+ CODE_STRUCTURE/Home.html                       | 395 [32m+++++++++++++[m
+ CODE_STRUCTURE/IMAGES/BEE_FREE_LOGO.jpeg       | Bin [31m0[m -> [32m82830[m bytes
+ CODE_STRUCTURE/IMAGES/Dubai_destination.jpg    | Bin [31m0[m -> [32m439884[m bytes
+ CODE_STRUCTURE/IMAGES/Home.jpg                 | Bin [31m0[m -> [32m478485[m bytes
+ CODE_STRUCTURE/IMAGES/Home2.jpg                | Bin [31m0[m -> [32m427874[m bytes
+ CODE_STRUCTURE/IMAGES/Hotel.jpg                | Bin [31m0[m -> [32m316182[m bytes
+ CODE_STRUCTURE/IMAGES/Hotel2.jpg               | Bin [31m0[m -> [32m347478[m bytes
+ CODE_STRUCTURE/IMAGES/Paris_destination.jpg    | Bin [31m0[m -> [32m375621[m bytes
+ CODE_STRUCTURE/IMAGES/zanzibar_destination.jpg | Bin [31m0[m -> [32m646601[m bytes
+ CODE_STRUCTURE/REQUEST_QUOTE.html              | 398 [32m+++++++++++++[m
+ CODE_STRUCTURE/about.html                      | 246 [32m++++++++[m
+ CODE_STRUCTURE/contact.html                    | 336 [32m+++++++++++[m
+ CODE_STRUCTURE/hotel.html                      | 434 [32m++++++++++++++[m
+ CSS_STYLE/JS_main.js                           | 306 [32m++++++++++[m
+ CSS_STYLE/STYLES.css                           | 175 [32m++++++[m
+ DEPLOYMENT_CHECKLIST.md                        |  12 [32m+[m
+ README.md                                      | 451 [32m+++++++++++++++[m
+ index.html                                     |  36 [32m++[m
+ robots.txt                                     |   3 [32m+[m
+ 21 files changed, 3568 insertions(+)
