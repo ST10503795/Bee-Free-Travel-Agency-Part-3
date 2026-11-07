@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!--
+      I added the basic page settings to make sure the website displays
+      correctly on different devices. I also included a page title and
+      description to help search engines understand what this page is about.
+    -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Bee Free Travel Agency</title>
+    <meta
+      name="description"
+      content="Learn about Bee Free Travel Agency, our travel inspiration and our approach to exploring the world."
+    />
+
+    <!--
+      I linked the same CSS and JavaScript files used by the other pages.
+      This helps me keep the design consistent and means I don't have
+      to write separate styling or navigation code for every page.
+    -->
+    <link rel="stylesheet" href="../CSS_STYLE/STYLES.css" />
+    <script src="../CSS_STYLE/JS_main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+
+    <!--  HEADER AND NAVIGATION -->
+    <!--
+      I kept the navigation layout the same across the website so that
+      visitors can easily move between pages. I also included a menu
+      button for smaller screens, which works with my JavaScript file.
+      The current page is marked so visitors know where they are.
+    -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="Home.html">
+          <img
+            src="IMAGES/BEE_FREE_LOGO.jpeg"
+            alt="Bee Free Travel Agency logo"
+          />
+          <span><strong>BEE FREE</strong><small>TRAVEL AGENCY</small></span>
+        </a>
+
+        <button
+          id="menuButton"
+          class="menu-toggle"
+          type="button"
+          aria-controls="mainNav"
+          aria-expanded="false"
+        >
+          ☰ Menu
+        </button>
+
+        <nav id="mainNav" class="nav" aria-label="Main navigation">
+          <a href="Home.html">Home</a>
+          <a href="about.html" aria-current="page">About</a>
+          <a href="DESTINATION.html">Destinations</a>
+          <a href="hotel.html">Hotels</a>
+          <a href="REQUEST_QUOTE.html">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <!--  ABOUT PAGE INTRODUCTION  -->
+      <!--
+        I wanted the About page to have a clear introduction before going
+        into more detail about the travel agency. This section gives
+        visitors a quick idea of what Bee Free represents and what
+        they can expect to learn about on this page.
+      -->
+      <section class="subhero">
+        <div class="wrap">
+          <p class="eyebrow">OUR STORY</p>
+          <h1>About Bee Free</h1>
+          <p>
+            Travel inspiration, new experiences and meaningful journeys are at
+            the heart of Bee Free Travel Agency.
+          </p>
+        </div>
+      </section>
+
+      <!-- WHO WE ARE-->
+      <!--
+        This section explains the purpose behind Bee Free Travel Agency.
+        I used a two-column layout because I wanted visitors to read
+        about the business while also seeing a travel-related image.
+        The layout also adjusts on smaller screens through my CSS.
+      -->
+      <section class="section wrap split">
+        <div>
+          <p class="eyebrow">WHO WE ARE</p>
+          <h2>Travel creates memories that last.</h2>
+          <p>
+            Bee Free Travel Agency is a travel-inspired website designed to help
+            visitors discover beautiful destinations, learn about accommodation
+            and begin planning future holidays.
+          </p>
+          <p>
+            Our purpose is to make travel exploration more enjoyable by sharing
+            useful information about destinations and helping visitors
+            communicate what they want from a trip.
+          </p>
+          <p>
+            We believe that exploring different places, cultures and experiences
+            can create unforgettable memories.
+          </p>
+          <a class="btn btn-green" href="DESTINATION.html"
+            >Explore Destinations</a
+          >
+        </div>
+        <img
+          class="feature-photo"
+          src="IMAGES/Home2.jpg"
+          alt="Travel scenery representing exploration"
+          loading="lazy"
+        />
+      </section>
+
+      <!-- OUR VALUES  -->
+      <!--
+        I decided to separate the main values of Bee Free into three cards.
+        This makes the information easier to understand instead of putting
+        everything into one long paragraph. Each card focuses on something
+        important to the type of travel experience the agency promotes.
+      -->
+      <section class="section soft">
+        <div class="wrap">
+          <div class="section-title">
+            <p class="eyebrow">OUR APPROACH</p>
+            <h2>What Bee Free represents.</h2>
+          </div>
+          <div class="cards">
+            <article class="card">
+              <div class="card-body">
+                <h3>Explore</h3>
+                <p>
+                  Discover different destinations, beautiful landscapes and new
+                  cultures.
+                </p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-body">
+                <h3>Experience</h3>
+                <p>
+                  Enjoy new activities and create memories that go beyond the
+                  journey itself.
+                </p>
+              </div>
+            </article>
+            <article class="card">
+              <div class="card-body">
+                <h3>Connect</h3>
+                <p>
+                  Make it easier for visitors to ask questions and share their
+                  travel preferences.
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- EXPLORE DESTINATIONS -->
+      <!--
+        After visitors have learned about the travel agency, I wanted
+        to give them a clear next step. This button takes them to the
+        Destinations page, where they can explore the available places
+        and read more about each destination.
+      -->
+      <section class="cta">
+        <div class="wrap">
+          <h2>Where will your next journey take you?</h2>
+          <p>Discover a destination that inspires your next adventure.</p>
+          <a class="btn btn-gold" href="DESTINATION.html"
+            >Discover Destinations</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER  -->
+    <!--
+      I reused the same footer structure throughout the website to
+      keep the pages consistent. It includes links to the main
+      sections so visitors can still navigate the website after
+      reaching the bottom of a page.
+    -->
+    <footer class="site-footer">
+      <div class="wrap foot-grid">
+        <div>
+          <h3>Bee Free Travel Agency</h3>
+          <p>Explore more. Experience more. Travel freely.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="DESTINATION.html">Destinations</a
+          ><a href="hotel.html">Hotels</a
+          ><a href="REQUEST_QUOTE.html">Request a Quote</a>
+        </div>
+        <div>
+          <h3>Information</h3>
+          <a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+          <p>South Africa</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 Bee Free Travel Agency. Student Website Project.
+      </div>
+    </footer>
+  </body>
+</html>
