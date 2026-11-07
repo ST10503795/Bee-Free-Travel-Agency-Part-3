@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- I added the page settings so the Contact page works on different
+         screen sizes. The title and description also help search engines
+         understand the purpose of this page. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Bee Free Travel Agency</title>
+    <meta
+      name="description"
+      content="Contact Bee Free Travel Agency with general questions, travel information requests or website feedback."
+    />
+    <link rel="stylesheet" href="../CSS_STYLE/STYLES.css" />
+
+    <!-- I use the same stylesheet and JavaScript file as the other pages
+         to keep the design consistent and handle the menu and form. -->
+    <script src="../CSS_STYLE/JS_main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+
+    <!-- I kept the same navigation across the website so visitors can find
+         their way around easily. The menu button also helps on smaller screens. -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="Home.html">
+          <img
+            src="IMAGES/BEE_FREE_LOGO.jpeg"
+            alt="Bee Free Travel Agency logo"
+          />
+          <span><strong>BEE FREE</strong><small>TRAVEL AGENCY</small></span>
+        </a>
+        <button
+          id="menuButton"
+          class="menu-toggle"
+          type="button"
+          aria-controls="mainNav"
+          aria-expanded="false"
+        >
+          ☰ Menu
+        </button>
+        <nav id="mainNav" class="nav" aria-label="Main navigation">
+          <a href="Home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="DESTINATION.html">Destinations</a>
+          <a href="hotel.html">Hotels</a>
+          <a href="REQUEST_QUOTE.html">Request a Quote</a>
+          <a href="contact.html" aria-current="page">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <!-- I added a short introduction to make it clear that visitors can
+           use this page for questions, suggestions or feedback. -->
+      <section class="subhero">
+        <div class="wrap">
+          <p class="eyebrow">GET IN TOUCH</p>
+          <h1>Contact Bee Free</h1>
+          <p>
+            Have a question, suggestion or travel enquiry? We'd love to hear
+            from you.
+          </p>
+        </div>
+      </section>
+
+      <!-- I placed the contact information beside the form so visitors can
+           choose between a general message and a more detailed travel enquiry. -->
+      <section class="section wrap contact-cols">
+        <div>
+          <p class="eyebrow">WE'RE HERE TO HELP</p>
+          <h2>Start a conversation.</h2>
+          <p>
+            Use this page to send a general message, ask a question about travel
+            information or provide feedback about the website.
+          </p>
+
+          <div class="info-card">
+            <!-- I included a link to the separate quote form because planning a
+                 holiday requires more details than a general contact message. -->
+            <h3>Planning a holiday?</h3>
+            <p>
+              If you have a destination in mind, use our Request a Quote form to
+              provide your travel dates, group size and accommodation
+              preferences.
+            </p>
+            <a class="text-link" href="REQUEST_QUOTE.html"
+              >Request a Travel Quote →</a
+            >
+          </div>
+
+          <div class="info-card">
+            <!-- I kept the location information general instead of showing a
+                 street address that has not been confirmed. -->
+            <h3>Our Location</h3>
+            <p>South Africa</p>
+            <p>
+              Use the form beside this information to send a general message.
+            </p>
+          </div>
+        </div>
+
+        <!-- I created this form for general questions and website feedback.
+             The required fields help collect enough detail to respond properly. -->
+        <div class="form-panel">
+          <h2>Send us a message.</h2>
+          <p>Fields marked * are required.</p>
+          <form
+            id="contactForm"
+            action="https://formsubmit.co/ajax/YOUR_EMAIL@example.com"
+            method="post"
+            novalidate
+          >
+            <!-- I used a form submission service rather than building a backend.
+                 The example email must be replaced with a verified real address
+                 before the form can receive messages. -->
+            <input
+              type="hidden"
+              name="_subject"
+              value="Bee Free Contact Message"
+            />
+
+            <div class="field">
+              <label for="contactName">Full Name *</label>
+              <input
+                id="contactName"
+                name="name"
+                type="text"
+                minlength="2"
+                maxlength="80"
+                autocomplete="name"
+                required
+              />
+              <small id="contactNameError" class="err"></small>
+            </div>
+
+            <div class="field">
+              <label for="contactEmail">Email Address *</label>
+              <input
+                id="contactEmail"
+                name="email"
+                type="email"
+                autocomplete="email"
+                required
+              />
+              <small id="contactEmailError" class="err"></small>
+            </div>
+
+            <div class="field">
+              <label for="contactPhone">Phone Number (Optional)</label>
+              <input
+                id="contactPhone"
+                name="phone"
+                type="tel"
+                pattern="[+0-9 ()-]{9,20}"
+                maxlength="20"
+                placeholder="082 123 4567"
+              />
+              <small id="contactPhoneError" class="err"></small>
+            </div>
+
+            <div class="field">
+              <!-- I added message categories so visitors can explain what their
+                   enquiry is about before writing the full message. -->
+              <label for="contactType">Message Type *</label>
+              <select id="contactType" name="messageType" required>
+                <option value="">Choose a message type</option>
+                <option value="General enquiry">General Enquiry</option>
+                <option value="Travel information">Travel Information</option>
+                <option value="Website feedback">Website Feedback</option>
+              </select>
+              <small id="contactTypeError" class="err"></small>
+            </div>
+
+            <div class="field">
+              <label for="contactMessage">Your Message *</label>
+              <textarea
+                id="contactMessage"
+                name="message"
+                minlength="10"
+                maxlength="1500"
+                placeholder="How can we help you?"
+                required
+              ></textarea>
+              <small id="contactMessageError" class="err"></small>
+            </div>
+
+            <div class="field">
+              <!-- I made consent required so visitors agree to share their
+                   information before they submit the form. -->
+              <label class="checkbox-line" for="contactConsent">
+                <input
+                  id="contactConsent"
+                  name="consent"
+                  type="checkbox"
+                  value="Yes"
+                  required
+                />
+                <span
+                  >I agree to provide my information for this enquiry. *</span
+                >
+              </label>
+              <small id="contactConsentError" class="err"></small>
+            </div>
+
+            <button class="btn btn-gold" type="submit">Send Message</button>
+            <p
+              id="contactStatus"
+              class="feedback"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
+            <!-- I included a feedback area so visitors can see validation
+                 messages or an update after trying to send their enquiry. -->
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- I reused the footer from the other pages so the website stays
+         consistent and visitors can quickly reach the main sections. -->
+    <footer class="site-footer">
+      <div class="wrap foot-grid">
+        <div>
+          <h3>Bee Free Travel Agency</h3>
+          <p>Explore more. Experience more. Travel freely.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="DESTINATION.html">Destinations</a
+          ><a href="hotel.html">Hotels</a
+          ><a href="REQUEST_QUOTE.html">Request a Quote</a>
+        </div>
+        <div>
+          <h3>Information</h3>
+          <a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+          <p>South Africa</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 Bee Free Travel Agency. Student Website Project.
+      </div>
+    </footer>
+  </body>
+</html>

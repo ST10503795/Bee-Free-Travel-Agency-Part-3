@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- I included these settings to make sure the page displays correctly
+         on different devices. The description also helps search engines
+         understand what visitors can do on this page. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Request a Travel Quote | Bee Free Travel Agency</title>
+    <meta
+      name="description"
+      content="Send a travel enquiry to Bee Free Travel Agency with your destination, travel dates, number of travellers and accommodation preferences."
+    />
+
+    <!-- I connected the shared CSS and JavaScript files so this page
+         follows the same design as the rest of my website. The JavaScript
+         also handles the form validation and interactive features. -->
+    <link rel="stylesheet" href="../CSS_STYLE/STYLES.css" />
+    <script src="../CSS_STYLE/JS_main.js" defer></script>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#mainContent">Skip to content</a>
+
+    <!-- I kept the navigation consistent with my other pages so visitors
+         can move around the website easily. I also included a menu button
+         that can be used when the website is viewed on smaller screens. -->
+    <header class="site-header">
+      <div class="wrap header-inner">
+        <a class="brand" href="Home.html">
+          <img
+            src="IMAGES/BEE_FREE_LOGO.jpeg"
+            alt="Bee Free Travel Agency logo"
+          />
+          <span><strong>BEE FREE</strong><small>TRAVEL AGENCY</small></span>
+        </a>
+
+        <button
+          id="menuButton"
+          class="menu-toggle"
+          type="button"
+          aria-controls="mainNav"
+          aria-expanded="false"
+        >
+          ☰ Menu
+        </button>
+
+        <nav id="mainNav" class="nav" aria-label="Main navigation">
+          <a href="Home.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="DESTINATION.html">Destinations</a>
+          <a href="hotel.html">Hotels</a>
+          <a href="REQUEST_QUOTE.html" aria-current="page">Request a Quote</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="mainContent">
+      <!-- I added this introduction to let visitors know what the page
+           is for before they complete the form. The idea is to make
+           the travel enquiry process feel simple and welcoming. -->
+      <section class="subhero">
+        <div class="wrap">
+          <p class="eyebrow">YOUR NEXT ADVENTURE</p>
+          <h1>Request a Travel Quote</h1>
+          <p>
+            Tell us where you want to go and what you would like from your
+            holiday.
+          </p>
+        </div>
+      </section>
+
+      <!-- I created this form to collect the important information needed
+           for a travel enquiry, including the visitor's contact details,
+           destination, travel dates and accommodation preferences. -->
+      <section class="section wrap">
+        <div class="form-panel narrow">
+          <h2>Tell us about your journey.</h2>
+          <p>Complete the fields marked * to prepare your travel enquiry.</p>
+
+          <!-- I connected the form to a submission service instead of
+               building my own backend. The example email address must
+               be replaced with a real verified address before enquiries
+               can actually be received. -->
+          <form
+            id="quoteForm"
+            action="https://formsubmit.co/ajax/YOUR_EMAIL@example.com"
+            method="post"
+            novalidate
+          >
+            <input
+              type="hidden"
+              name="_subject"
+              value="Bee Free Travel Enquiry"
+            />
+
+            <!-- I grouped the fields together to make the form easier to
+                 complete. Required fields also have their own error
+                 message areas so visitors can see what needs correcting. -->
+            <div class="fields">
+              <div class="field">
+                <label for="quoteName">Full Name *</label>
+                <input
+                  id="quoteName"
+                  name="name"
+                  type="text"
+                  minlength="2"
+                  maxlength="80"
+                  autocomplete="name"
+                  required
+                />
+                <small id="quoteNameError" class="err"></small>
+              </div>
+
+              <div class="field">
+                <label for="quoteEmail">Email Address *</label>
+                <input
+                  id="quoteEmail"
+                  name="email"
+                  type="email"
+                  autocomplete="email"
+                  required
+                />
+                <small id="quoteEmailError" class="err"></small>
+              </div>
+
+              <div class="field">
+                <label for="quotePhone">Phone Number *</label>
+                <input
+                  id="quotePhone"
+                  name="phone"
+                  type="tel"
+                  pattern="[+0-9 ()-]{9,20}"
+                  maxlength="20"
+                  placeholder="082 123 4567"
+                  required
+                />
+                <small id="quotePhoneError" class="err"></small>
+              </div>
+
+              <div class="field">
+                <label for="quoteDestination">Destination *</label>
+                <select id="quoteDestination" name="destination" required>
+                  <option value="">Choose a destination</option>
+                  <option value="Paris">Paris, France</option>
+                  <option value="Dubai">Dubai, UAE</option>
+                  <option value="Zanzibar">Zanzibar, Tanzania</option>
+                  <option value="Other">Other destination</option>
+                </select>
+                <small id="quoteDestinationError" class="err"></small>
+              </div>
+
+              <!-- I included an additional destination field because
+                   visitors might want to travel somewhere that is not
+                   listed in the dropdown. It stays hidden until needed
+                   so the form does not look unnecessarily complicated. -->
+              <div id="otherBox" class="field wide" hidden>
+                <label for="quoteOther">Name Your Destination *</label>
+                <input
+                  id="quoteOther"
+                  name="otherDestination"
+                  type="text"
+                  minlength="2"
+                  maxlength="80"
+                  placeholder="Enter a city or country"
+                />
+                <small id="quoteOtherError" class="err"></small>
+              </div>
+
+              <!-- I used date inputs for the departure and return dates.
+                   This makes it easier for visitors to choose their
+                   travel dates, while JavaScript can check whether
+                   the selected dates make sense. -->
+              <div class="field">
+                <label for="quoteDepart">Departure Date *</label>
+                <input
+                  id="quoteDepart"
+                  name="departureDate"
+                  type="date"
+                  required
+                />
+                <small id="quoteDepartError" class="err"></small>
+              </div>
+
+              <div class="field">
+                <label for="quoteReturn">Return Date *</label>
+                <input
+                  id="quoteReturn"
+                  name="returnDate"
+                  type="date"
+                  required
+                />
+                <small id="quoteReturnError" class="err"></small>
+              </div>
+
+              <!-- I included the number of travellers and accommodation
+                   preference because these details are important when
+                   understanding the type of holiday someone wants. -->
+              <div class="field">
+                <label for="quoteTravellers">Number of Travellers *</label>
+                <input
+                  id="quoteTravellers"
+                  name="travellers"
+                  type="number"
+                  min="1"
+                  max="20"
+                  step="1"
+                  value="2"
+                  required
+                />
+                <small id="quoteTravellersError" class="err"></small>
+              </div>
+
+              <div class="field">
+                <label for="quoteStay">Accommodation Preference *</label>
+                <select id="quoteStay" name="accommodation" required>
+                  <option value="">Choose accommodation</option>
+                  <option value="Hotel">Hotel</option>
+                  <option value="Resort">Resort</option>
+                  <option value="No preference">No preference</option>
+                </select>
+                <small id="quoteStayError" class="err"></small>
+              </div>
+
+              <!-- I added this optional text area because not every
+                   travel preference can be covered by a dropdown.
+                   Visitors can explain any special requirements
+                   or activities they would like included in their trip. -->
+              <div class="field wide">
+                <label for="quoteNotes">Additional Travel Requirements</label>
+                <textarea
+                  id="quoteNotes"
+                  name="requirements"
+                  maxlength="1000"
+                  placeholder="Tell us about your preferred activities, rooms or travel needs."
+                ></textarea>
+              </div>
+
+              <!-- I included a consent checkbox so visitors have to
+                   agree to share their information for the enquiry.
+                   This also prevents the form from being submitted
+                   without the required agreement. -->
+              <div class="field wide">
+                <label class="checkbox-line" for="quoteConsent">
+                  <input
+                    id="quoteConsent"
+                    name="consent"
+                    type="checkbox"
+                    value="Yes"
+                    required
+                  />
+                  <span
+                    >I agree to provide my information for this travel enquiry.
+                    *</span
+                  >
+                </label>
+                <small id="quoteConsentError" class="err"></small>
+              </div>
+            </div>
+
+            <!-- I placed the submit button after all the fields so
+                 visitors can review their information before sending it. -->
+            <button class="btn btn-gold" type="submit">
+              Submit Travel Enquiry
+            </button>
+
+            <!-- I added a feedback area so the website can tell visitors
+                 if there is a problem with their information or provide
+                 an update about the form submission. -->
+            <p
+              id="quoteStatus"
+              class="feedback"
+              role="status"
+              aria-live="polite"
+              hidden
+            ></p>
+          </form>
+
+          <!-- I created an enquiry summary that can display the information
+               provided by the visitor after validation. I also made it
+               clear that submitting an enquiry does not automatically
+               confirm a booking, price or availability. -->
+          <div id="quoteSummary" class="summary" hidden>
+            <h3>Your Travel Enquiry Summary</h3>
+            <p id="summaryText"></p>
+            <p>Prices and availability are not confirmed by this form.</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- I used the same footer design as the other pages to keep the
+         website consistent. It also gives visitors quick access to
+         important pages after they reach the bottom of the form. -->
+    <footer class="site-footer">
+      <div class="wrap foot-grid">
+        <div>
+          <h3>Bee Free Travel Agency</h3>
+          <p>Explore more. Experience more. Travel freely.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <a href="DESTINATION.html">Destinations</a
+          ><a href="hotel.html">Hotels</a
+          ><a href="REQUEST_QUOTE.html">Request a Quote</a>
+        </div>
+        <div>
+          <h3>Information</h3>
+          <a href="about.html">About Us</a><a href="contact.html">Contact Us</a>
+          <p>South Africa</p>
+        </div>
+      </div>
+      <div class="copyright">
+        © 2026 Bee Free Travel Agency. Student Website Project.
+      </div>
+    </footer>
+  </body>
+</html>
