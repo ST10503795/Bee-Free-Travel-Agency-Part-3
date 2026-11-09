@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- I added the page settings so the error page displays correctly on different devices and has its own browser title. -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Page Not Found | Bee Free Travel Agency</title>
+
+    <meta
+      name="description"
+      content="The page you are looking for could not be found. Return to Bee Free Travel Agency and continue exploring your next adventure."
+    />
+
+    <!-- I included the shared stylesheet to keep the error page connected to the website's existing design. -->
+    <link rel="stylesheet" href="CSS_STYLE/STYLES.css" />
+
+    <!-- This page is an error page, so search engines should not list it as normal website content. -->
+    <meta name="robots" content="noindex, follow" />
+
+    <!-- I added page-specific styling to give visitors a clear and welcoming error message. -->
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Montserrat", Arial, sans-serif;
+        color: #102a43;
+        background-color: #f4f8f7;
+        line-height: 1.6;
+      }
+
+      a {
+        transition: 0.2s ease;
+      }
+
+      a:focus-visible {
+        outline: 3px solid #d6a84f;
+        outline-offset: 4px;
+      }
+
+      /* I kept the header consistent with the Bee Free branding. */
+      .error-header {
+        background-color: #102a43;
+        color: #ffffff;
+        padding: 16px 5%;
+      }
+
+      .error-header-inner {
+        max-width: 1150px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        flex-wrap: wrap;
+      }
+
+      .error-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: #ffffff;
+        text-decoration: none;
+      }
+
+      .error-brand img {
+        width: 55px;
+        height: 55px;
+        object-fit: contain;
+        border-radius: 50%;
+        background-color: #ffffff;
+      }
+
+      .error-brand strong {
+        display: block;
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+      }
+
+      .error-brand small {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 2px;
+      }
+
+      .error-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .error-nav a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+
+      .error-nav a:hover {
+        color: #d6a84f;
+      }
+
+      /* I placed the main error message in the centre so visitors can quickly understand what happened. */
+      .error-main {
+        min-height: 75vh;
+        display: grid;
+        place-items: center;
+        padding: 65px 20px;
+      }
+
+      .error-card {
+        width: 100%;
+        max-width: 780px;
+        padding: 55px 35px;
+        text-align: center;
+        background-color: #ffffff;
+        border: 1px solid #e1e9e6;
+        border-radius: 20px;
+        box-shadow: 0 12px 35px rgba(16, 42, 67, 0.08);
+      }
+
+      .error-eyebrow {
+        margin: 0 0 10px;
+        color: #16836e;
+        font-size: 0.85rem;
+        font-weight: 700;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      .error-number {
+        margin: 0;
+        color: #16836e;
+        font-size: clamp(5rem, 15vw, 9rem);
+        font-weight: 800;
+        line-height: 1.1;
+        letter-spacing: 5px;
+      }
+
+      .error-card h1 {
+        margin: 15px 0;
+        color: #102a43;
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: clamp(1.8rem, 5vw, 2.7rem);
+        line-height: 1.2;
+      }
+
+      .error-description {
+        max-width: 560px;
+        margin: 0 auto;
+        color: #62717d;
+        font-size: 1rem;
+      }
+
+      /* I used two clear buttons to help visitors continue browsing the website. */
+      .error-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 30px;
+      }
+
+      .error-button {
+        display: inline-block;
+        padding: 13px 24px;
+        border: 2px solid transparent;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .error-button-primary {
+        color: #ffffff;
+        background-color: #16836e;
+      }
+
+      .error-button-primary:hover {
+        background-color: #106653;
+        transform: translateY(-2px);
+      }
+
+      .error-button-secondary {
+        color: #102a43;
+        background-color: #ffffff;
+        border-color: #16836e;
+      }
+
+      .error-button-secondary:hover {
+        color: #ffffff;
+        background-color: #16836e;
+        transform: translateY(-2px);
+      }
+
+      .error-help {
+        margin: 28px 0 0;
+        color: #62717d;
+        font-size: 0.9rem;
+      }
+
+      .error-help a {
+        color: #16836e;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .error-help a:hover {
+        text-decoration: underline;
+      }
+
+      /* I kept the footer simple and consistent with the rest of the website. */
+      .error-footer {
+        padding: 22px 20px;
+        color: #ffffff;
+        background-color: #102a43;
+        text-align: center;
+      }
+
+      .error-footer p {
+        margin: 0;
+        font-size: 0.85rem;
+      }
+
+      /* I adjusted the header, navigation and content spacing for smaller screens. */
+      @media (max-width: 650px) {
+        .error-header-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .error-nav {
+          justify-content: flex-start;
+          gap: 12px 18px;
+        }
+
+        .error-nav a {
+          font-size: 0.82rem;
+        }
+
+        .error-main {
+          min-height: 70vh;
+          padding: 40px 15px;
+        }
+
+        .error-card {
+          padding: 40px 20px;
+        }
+
+        .error-actions {
+          flex-direction: column;
+        }
+
+        .error-button {
+          width: 100%;
+          max-width: 280px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- I reused the Bee Free logo and created navigation links that work from the root folder. -->
+    <header class="error-header">
+      <div class="error-header-inner">
+        <a class="error-brand" href="CODE_STRUCTURE/Home.html">
+          <img
+            src="CODE_STRUCTURE/IMAGES/BEE_FREE_LOGO.jpeg"
+            alt="Bee Free Travel Agency logo"
+          />
+
+          <span>
+            <strong>BEE FREE</strong>
+            <small>TRAVEL AGENCY</small>
+          </span>
+        </a>
+
+        <nav class="error-nav" aria-label="Main navigation">
+          <a href="CODE_STRUCTURE/Home.html">Home</a>
+          <a href="CODE_STRUCTURE/about.html">About</a>
+          <a href="CODE_STRUCTURE/DESTINATION.html">Destinations</a>
+          <a href="CODE_STRUCTURE/hotel.html">Hotels</a>
+          <a href="CODE_STRUCTURE/REQUEST_QUOTE.html">Request a Quote</a>
+          <a href="CODE_STRUCTURE/contact.html">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="error-main">
+      <section class="error-card" aria-labelledby="errorTitle">
+        <p class="error-eyebrow">Bee Free Travel Agency</p>
+
+        <p class="error-number" aria-hidden="true">404</p>
+
+        <h1 id="errorTitle">Oops! This page is off the map.</h1>
+
+        <p class="error-description">
+          It looks like the page you are searching for cannot be found. It may
+          have moved, been removed, or the web address may have been entered
+          incorrectly. Don't worry! Your next adventure is still waiting for
+          you.
+        </p>
+
+        <div class="error-actions">
+          <a
+            class="error-button error-button-primary"
+            href="CODE_STRUCTURE/Home.html"
+          >
+            Return to Home
+          </a>
+
+          <a
+            class="error-button error-button-secondary"
+            href="CODE_STRUCTURE/DESTINATION.html"
+          >
+            Explore Destinations
+          </a>
+        </div>
+
+        <p class="error-help">
+          Still need assistance?
+          <a href="CODE_STRUCTURE/contact.html">Contact us here.</a>
+        </p>
+      </section>
+    </main>
+
+    <footer class="error-footer">
+      <p>
+        © 2026 Bee Free Travel Agency. All rights reserved by Bonginkosi Mpanza
+      </p>
+    </footer>
+  </body>
+</html>
+
+<!--
+    References and Acknowledgements
+
+    Learning resources used to support my understanding of HTML and CSS:
+
+    1. W3Schools
+       HTML and CSS tutorials.
+       https://www.w3schools.com/html/
+       https://www.w3schools.com/css/
+
+    2. Dr Angela Yu
+       The Complete Full-Stack Web Development Bootcamp.
+       Udemy.
+       https://www.udemy.com/course/the-complete-web-development-bootcamp/
+
+    3. Harvard University - CS50
+       Week 0: HTML and CSS.
+       https://cs50.harvard.edu/web/weeks/0/
+
+    AI Assistance:
+    OpenAI ChatGPT was used as an additional learning and development
+    resource to assist with planning, structuring and drafting the
+    custom 404 error page. I reviewed and adapted the code for my project.
+-->
